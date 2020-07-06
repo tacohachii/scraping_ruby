@@ -2,13 +2,11 @@
 
 ## 始め方
 
-1. 以下のgemをインストールする
-- benchmark
-- fileutils
-- open-uri
-- nokogiri
-- mechanize
-- csv
+1. gemをインストールする
+```
+bundle install --path vendor/bundle
+```
+
 
 2. 実行する
 ```

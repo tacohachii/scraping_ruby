@@ -9,10 +9,17 @@ if [ $# != 1 ]; then
   exit 1
 fi
 
-for i in {15..15}; do
+for i in {19..120}; do
   echo start $i
   ruby src/main.rb $(($i*5-4+$1)) $(($i*5+$1))
+  # エラー処理
+  if [ $? -gt 0 ]; then
+    echo 
+    echo Erorr $i
+    date '+%T'
+    break
+  fi
   echo
-  echo_sleep 180
+  echo_sleep 240
   echo
 done
