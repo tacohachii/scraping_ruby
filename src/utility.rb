@@ -24,8 +24,6 @@ def get_company_info_hash_arr(root_url, index_path, page_range)
       company_path = node.children.attribute('href').value
       company_url = root_url + company_path
       company_name = node.children.children.inner_text
-      # p company_name
-      # p company_url
       company_name_arr << company_name
       company_url_arr << company_url
     end
@@ -36,7 +34,6 @@ def get_company_info_hash_arr(root_url, index_path, page_range)
     found_amount_arr = []
     doc.css('.p-foundAmount__value').each do |node|
       found_amount = node.children.inner_text == "-" ? "0" : node.children.inner_text
-      # p found_amount
       found_amount_arr << found_amount
     end
     raise "invalid found_amount_arr" if company_name_arr.count != found_amount_arr.count
@@ -45,7 +42,6 @@ def get_company_info_hash_arr(root_url, index_path, page_range)
     establish_arr = []
     doc.css('.p-establishment__value').each do |node|
       establish = node.children.inner_text
-      # p establish
       establish_arr << establish
     end
     raise "invalid establish_arr" if company_name_arr.count != establish_arr.count
@@ -58,7 +54,6 @@ def get_company_info_hash_arr(root_url, index_path, page_range)
         category = child.children.inner_text
         categories << category if category != ""
       end
-      # p categories
       categories_arr  << categories
     end
     raise "invalid categories_arr" if company_name_arr.count != categories_arr.count
@@ -82,11 +77,17 @@ end
 
 
 def get_complete_company_hash_arr(company_info_hash_arr)
+  agent = Mechanize.new
+  agent.user_agent_alias = "Windows Mozilla"
+  agent.user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"
+
+  puts ""
+  puts "company num #{company_info_hash_arr.length}"
+  puts "====================="
   complete_company_hash_arr = []
   company_info_hash_arr.each_with_index do |company_info, i|
     next if company_info[:found_amount] == "0"
 
-    agent = Mechanize.new
     page = agent.get(company_info[:url])
 
     # Nokogiriを使った操作
@@ -112,7 +113,7 @@ def get_complete_company_hash_arr(company_info_hash_arr)
         end
       end
     end
-    company_info[:description] = page.at(".p-intro__description").inner_text
+    company_info[:description] = page.at(".p-intro__description") ? page.at(".p-intro__description").inner_text : "-"
     puts "#{i+1}：#{company_info[:company_name]}"
     puts "====================="
     complete_company_hash_arr << company_info
