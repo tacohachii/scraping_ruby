@@ -9,17 +9,22 @@ if [ $# != 1 ]; then
   exit 1
 fi
 
-for i in {19..120}; do
+for i in {1..123}; do
   echo start $i
-  ruby src/main.rb $(($i*5-4+$1)) $(($i*5+$1))
+  # ruby src/main.rb $(($i*5-4+$1)) $(($i*5+$1))
   # エラー処理
   if [ $? -gt 0 ]; then
     echo 
     echo Erorr $i
     date '+%T'
+    afplay ./sounds/error.mp3
     break
+  else
+    afplay ./sounds/success.mp3
   fi
   echo
   echo_sleep 240
   echo
 done
+echo Finish!!!
+afplay ./sounds/done.mp3
