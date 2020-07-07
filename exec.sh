@@ -16,9 +16,10 @@ for i in {1..123}; do
   if [ $? -gt 0 ]; then
     echo 
     echo Erorr $i
+    echo Erorr $i >> output_error.txt
     date '+%T'
     afplay ./sounds/error.mp3
-    break
+    echo_sleep 100
   else
     afplay ./sounds/success.mp3
   fi

@@ -29,9 +29,9 @@ result = Benchmark.realtime do
   # 社別ページでの情報を取得
   complete_company_hash_arr = get_complete_company_hash_arr(company_info_hash_arr)
   outputs = complete_company_hash_arr.extend(CSVConvertible)
-  IO.write "output/output_#{page_min}_#{page_max}__#{time}.csv", outputs.to_csv
+  IO.write "output/output_#{format('%03d', page_min)}_#{format('%03d', page_max)}__#{time}.csv", outputs.to_csv
   puts ""
 end
 puts "処理時間：#{result.floor}s"
-puts "出力：output/output_#{page_min}_#{page_max}__#{time}.csv"
+puts "出力：output/output_#{format('%03d', page_min)}_#{format('%03d', page_max)}__#{time}.csv"
 FileUtils.rm("output/tmp_output.csv")
