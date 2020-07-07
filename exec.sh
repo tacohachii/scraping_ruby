@@ -17,7 +17,7 @@ for i in {1..123}; do
     echo 
     echo Erorr $i
     echo Erorr $i >> output_error.txt
-    date '+%T'
+    date '+%T' >> output_error.txt
     afplay ./sounds/error.mp3
     echo_sleep 100
   else

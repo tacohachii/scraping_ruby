@@ -94,6 +94,9 @@ def get_complete_company_hash_arr(company_info_hash_arr)
     end
 
     # Nokogiriを使った操作
+    company_info[:adress] = "-"
+    company_info[:homepage] = "-"
+    company_info[:employee_num] = "-"
     page.search(".p-col__label").each do |label|
       label_text = label.inner_text #=> imgタグの一覧
       if label_text == "住所"
