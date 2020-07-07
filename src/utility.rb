@@ -86,9 +86,8 @@ def get_complete_company_hash_arr(company_info_hash_arr)
   puts "====================="
   complete_company_hash_arr = []
   company_info_hash_arr.each_with_index do |company_info, i|
-    # next if company_info[:found_amount] == "0"
 
-    if company_info[:url] = "https://startup-db.com/ja/companies/16043/x.ai"
+    if company_info[:url] == "https://startup-db.com/ja/companies/16043/x.ai"
       page = agent.get("https://startup-db.com/ja/companies/16043")
     else
       page = agent.get(company_info[:url])

@@ -11,7 +11,7 @@ fi
 
 for i in {1..123}; do
   echo start $i
-  # ruby src/main.rb $(($i*5-4+$1)) $(($i*5+$1))
+  ruby src/main.rb $(($i*5-4+$1)) $(($i*5+$1))
   # エラー処理
   if [ $? -gt 0 ]; then
     echo 
