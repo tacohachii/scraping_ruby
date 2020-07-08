@@ -1,4 +1,4 @@
 .bundle/
 vendor/bundle/
-output/
+output/*
 output_db.csv

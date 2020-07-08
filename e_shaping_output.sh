@@ -8,4 +8,4 @@ for file in "${list[@]}"; do
   cat output/$file >> output_db.csv
 done
 
-# 見出し127個を削除する（最後一番上にのみつける）
+# 見出し124個を削除する（最後一番上にのみつける）

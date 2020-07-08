@@ -89,6 +89,18 @@ def get_complete_company_hash_arr(company_info_hash_arr)
 
     if company_info[:url] == "https://startup-db.com/ja/companies/16043/x.ai"
       page = agent.get("https://startup-db.com/ja/companies/16043")
+    elsif company_info[:url] == "https://startup-db.com/ja/companies/15777/poppy.ai"
+      page = agent.get("https://startup-db.com/ja/companies/15777")
+    elsif company_info[:url] == "https://startup-db.com/ja/companies/8736/chikyujin.jp"
+      page = agent.get("https://startup-db.com/ja/companies/8736")
+    elsif company_info[:url] == "https://startup-db.com/ja/companies/11113/prostage "
+      page = agent.get("https://startup-db.com/ja/companies/11113")
+    elsif company_info[:url] == "https://startup-db.com/ja/companies/16763/zigexn.vn"
+      page = agent.get("https://startup-db.com/ja/companies/16763")
+    elsif company_info[:url] == "https://startup-db.com/ja/companies/18322/bitmining "
+      page = agent.get("https://startup-db.com/ja/companies/18322")
+    elsif company_info[:url] == "https://startup-db.com/ja/companies/18892/seesaa.vn"
+      page = agent.get("https://startup-db.com/ja/companies/18892")
     else
       page = agent.get(company_info[:url])
     end
